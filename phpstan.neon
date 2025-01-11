@@ -1,0 +1,13 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+	level: 10
+	paths:
+	    - app/
+	    - database/
+	    - routes/
+	    - tests/
+	treatPhpDocTypesAsCertain: false
+	parallel:
+		maximumNumberOfProcesses: 4
