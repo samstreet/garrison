@@ -4,10 +4,17 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\DifficultyCoefficient;
 use App\Enums\GameState;
+use App\Models\Buildings\Castle;
+use App\Models\Buildings\Garrison;
+use App\Models\Buildings\Stable;
+use Database\Factories\GameFactory;
 use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
@@ -17,6 +24,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Game extends Model
 {
+    /** @use HasFactory<GameFactory> */
+    use HasFactory;
     use HasTimestamps;
 
     protected $fillable = [
@@ -24,14 +33,22 @@ class Game extends Model
         'uuid',
         'state',
         'player_id',
+        'difficulty'
     ];
 
     protected $hidden = [
         'id',
     ];
 
+//    protected $with = [
+//        'castle',
+//        'garrison',
+//        'stable',
+//    ];
+
     protected $casts = [
         'state' => GameState::class,
+        'difficulty' => DifficultyCoefficient::class,
     ];
 
     /**
@@ -40,5 +57,29 @@ class Game extends Model
     public function player(): BelongsTo
     {
         return $this->belongsTo(Player::class);
+    }
+
+    /**
+     * @return HasOne<Castle, $this>
+     */
+    public function castle(): HasOne
+    {
+        return $this->hasOne(Castle::class);
+    }
+
+    /**
+     * @return HasOne<Garrison, $this>
+     */
+    public function garrison(): HasOne
+    {
+        return $this->hasOne(Garrison::class);
+    }
+
+    /**
+     * @return HasOne<Stable, $this>
+     */
+    public function stable(): HasOne
+    {
+        return $this->hasOne(Stable::class);
     }
 }

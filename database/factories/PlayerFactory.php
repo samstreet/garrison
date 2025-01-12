@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Player;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Player>
+ * @extends Factory<Player>
  */
 class PlayerFactory extends Factory
 {
@@ -22,7 +22,10 @@ class PlayerFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'uuid' => Str::uuid(),
+            'uuid' => Str::uuid()->toString(),
+            'level' => 1,
+            'wins' => 0,
+            'losses' => 0,
         ];
     }
 }

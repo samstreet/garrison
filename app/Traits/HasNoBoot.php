@@ -4,4 +4,7 @@ declare(strict_types=1);
 
 namespace App\Traits;
 
-trait HasDamageModifier {}
+trait HasNoBoot
+{
+    public function boot(): void {}
+}

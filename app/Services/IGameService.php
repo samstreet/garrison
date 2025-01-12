@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Models\Game;
 use App\Models\Player;
 
-interface IGameService
+interface IGameService extends ICreateable
 {
     public function initialiseGame(Player $player): ?Game;
 }

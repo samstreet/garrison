@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Player;
-use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Laravel\Jetstream\Features;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Player>
+ * @extends Factory<Player>
  */
 class GameFactory extends Factory
 {
