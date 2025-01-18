@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Traits\HasDamageModifier;
-use App\Traits\HasStressModifier;
+use App\Models\Traits\HasDamageModifier;
+use App\Models\Traits\HasStressModifier;
 use Database\Factories\PlayerFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

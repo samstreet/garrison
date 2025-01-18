@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Services\BuildingService;
 use App\Services\GameService;
+use App\Services\IBuildingService;
 use App\Services\IGameService;
 use App\Services\IPlayerService;
 use App\Services\PlayerService;
@@ -19,5 +21,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(IGameService::class, GameService::class);
         $this->app->bind(IPlayerService::class, PlayerService::class);
+        $this->app->bind(IBuildingService::class, BuildingService::class);
     }
 }
